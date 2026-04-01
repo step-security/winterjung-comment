@@ -1,0 +1,36 @@
+name: Comment Action
+description: Create and edit comment on PR, issue
+author: 'step-security'
+branding:
+  icon: message-square
+  color: blue
+inputs:
+  type:
+    required: true
+    description: create|edit
+  token:
+    required: true
+    description: github token
+  body:
+    required: false
+    description: comment body
+  comment_id:
+    required: false
+    description: required when edit, delete comment
+  issue_number:
+    required: false
+    description: required when create comment
+outputs:
+  id:
+    description: id of new comment
+  body:
+    description: body of new comment
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.type }}
+    - ${{ inputs.token }}
+    - ${{ inputs.body }}
+    - ${{ inputs.comment_id }}
+    - ${{ inputs.issue_number }}
