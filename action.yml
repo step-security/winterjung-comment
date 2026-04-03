@@ -27,7 +27,7 @@ outputs:
     description: body of new comment
 runs:
   using: docker
-  image: Dockerfile
+  image: 'docker://ghcr.io/step-security/winterjung-comment:v1.1.0@sha256:fe6708e1825533ce6d38b03a9d3131939510354385031ebd7bad925ce96776c4' # v1.1.0
   args:
     - ${{ inputs.type }}
     - ${{ inputs.token }}
